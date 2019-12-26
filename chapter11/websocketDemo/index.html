@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>websocket</title>
+</head>
+<body>
+<h1>Echo Test</h1>
+<input id="sendText" type="text">
+<button id="sendBtn">发送</button>
+<div id="recv"></div>
+<script type="text/javascript">
+    var websocket = new WebSocket("wss://smart.gantch.cn/api/v1/deviceaccess/websocket");  //客户端
+    // var websocket = new WebSocket("ws://echo.websocket.org/");
+    websocket.onopen = function () {
+        console.log("websocket open");
+        document.getElementById("recv").innerText = "connected";
+    }
+    websocket.onclose = function () {
+        console.log("websocket close");
+    }
+    websocket.onmessage = function (e) { //客户端接收到服务器的信息时的回调函数
+        console.log(e.data);
+        document.getElementById("recv").innerText = e.data;
+    }
+    document.getElementById("sendBtn").onclick = function () {
+        var text = document.getElementById("sendText").value;
+        websocket.send(text);  //发送数据
+    }
+</script>
+</body>
+</html>
