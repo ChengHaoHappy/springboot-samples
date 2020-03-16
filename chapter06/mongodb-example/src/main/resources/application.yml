@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      database: test
+      host: 192.168.85.132
+      port: 27017
+      username: sang
+      password: 123

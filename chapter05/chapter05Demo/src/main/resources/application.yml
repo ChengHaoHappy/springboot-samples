@@ -13,3 +13,5 @@ spring:
       ddl-auto: update
     properties:
       hibernate: org.hibernate.dialect.MySQL57Dialect
+server:
+  port: 8989
